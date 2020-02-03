@@ -21,7 +21,6 @@ for i in range(1,T+1):
             if ok == True:
                 break                    
             elif k1 == stop: # 마지막으로 시작시점에서 최대 이동거리만큼 이동한 지점 사이에 End point가 존재하면 정지
-                start_point = k1
                 ok = True
                 break            
 

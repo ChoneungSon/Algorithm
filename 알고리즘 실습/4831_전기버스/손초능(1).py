@@ -19,7 +19,6 @@ for i in range(1,T+1):
                 results += 1
                 break
             elif k1 == stop:
-                start_point = k1
                 break                 
 
         if start_point == stop:
