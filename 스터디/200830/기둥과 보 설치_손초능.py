@@ -5,7 +5,7 @@ def solution(n, build_frame):
     def check(x, y, a):
         nonlocal frame, n
         if a:
-            if frame[y-1][x][0] or frame[y-1][x+1][0] \
+            if frame[y-1][x][0] or (x+1<=n and frame[y-1][x+1][0]) \
                 or (x-1 >= 0 and frame[y][x-1][1] and x+1 <= n and frame[y][x+1][1]):
                 return 1
         else:
@@ -25,11 +25,11 @@ def solution(n, build_frame):
                     (x+1<=n and frame[y][x+1][0] and not check(x+1, y, 0)) or \
                     (frame[y][x][0] and not check(x, y, 0)):
                     frame[y][x][1] = 1
-            else:
+            elif y+1<=n:
                 frame[y][x][0] = 0
-                if (frame[y][x][1] and not check(x, y, 1)) or \
-                    (x-1>=0 and frame[y][x-1][1] and not check(x-1, y, 1)) or \
-                    (y+1<=n and frame[y+1][x][0] and not check(x, y+1, 0)):
+                if (frame[y+1][x][1] and not check(x, y+1, 1)) or \
+                    (x-1>=0 and frame[y+1][x-1][1] and not check(x-1, y+1, 1)) or \
+                    (frame[y+1][x][0] and not check(x, y+1, 0)):
                     frame[y][x][0] = 1
 
     answer = []
